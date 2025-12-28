@@ -427,10 +427,8 @@ if submitted:
                 with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_file:
                     output_path = tmp_file.name
                 
-                # フォントファイルのパス
-                font_path = "fonts/IPAexGothic.ttf"
-                
-                generator = AccidentReportGenerator(font_path=font_path)
+                # フォントは環境に応じて自動選択される（font_path=Noneで自動検出）
+                generator = AccidentReportGenerator(font_path=None)
                 generator.generate(data, output_path)
                 
                 st.success("✅ PDFの生成が完了しました！")
